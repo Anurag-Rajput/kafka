@@ -21,6 +21,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import com.anurag.kafkaproducer.service.KafkaMessageConsumer;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -31,6 +32,17 @@ class KafkaProducerApplicationTests {
 
 	@MockitoBean
 	private KafkaTemplate<String, String> kafkaTemplate;
+
+	@Autowired
+	private KafkaMessageConsumer consumer;
+
+	@Test
+	void consumerRecordsReceivedMessages() {
+		consumer.consume("Consumed message");
+
+		org.assertj.core.api.Assertions.assertThat(consumer.getReceivedMessages())
+			.contains("Consumed message");
+	}
 
 	@Test
 	void publishesMessageAndReturnsAcknowledgementMetadata() throws Exception {

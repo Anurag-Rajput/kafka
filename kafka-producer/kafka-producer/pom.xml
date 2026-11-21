@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.anurag</groupId>
-	<artifactId>kafka-producer</artifactId>
+	<artifactId>producer_consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name/>
+	<name>producer_consumer</name>
 	<description/>
 	<url/>
 	<licenses>
